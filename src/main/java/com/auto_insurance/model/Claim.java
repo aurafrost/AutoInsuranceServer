@@ -10,7 +10,7 @@ public class Claim {
     @Column(name = "claim_id")
     private int claim_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 

@@ -8,7 +8,7 @@ import java.util.List;
 public class User {
 
     @Id
-    private String user_id;
+    private String id;
 
     @Column(name = "email")
     private String email;
@@ -28,7 +28,7 @@ public class User {
     private String insured_phone;
     @Column(name = "insured_address")
     private String insured_address;
-    @Column(name = "driver license")
+    @Column(name = "driver_license")
     private String insured_driverLicense;
     @Column(name = "license_plate")
     private String insured_licensePlate;
@@ -36,8 +36,8 @@ public class User {
 
     public User() { }
 
-    public User(String user_id, String email, List<Claim> claim, String password, String type, String fname, String lname, String insured_phone, String insured_address, String insured_driverLicense, String insured_licensePlate) {
-        this.user_id = user_id;
+    public User(String id, String email, List<Claim> claim, String password, String type, String fname, String lname, String insured_phone, String insured_address, String insured_driverLicense, String insured_licensePlate) {
+        this.id = id;
         this.email = email;
         this.claim = claim;
         this.password = password;
@@ -50,8 +50,12 @@ public class User {
         this.insured_licensePlate = insured_licensePlate;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setClaim(List<Claim> claim) {
@@ -74,9 +78,7 @@ public class User {
         this.insured_licensePlate = insured_licensePlate;
     }
 
-    public String getUser_id() {
-        return user_id;
-    }
+
 
     public List<Claim> getClaim() {
         return claim;
