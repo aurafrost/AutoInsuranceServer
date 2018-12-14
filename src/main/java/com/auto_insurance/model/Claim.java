@@ -2,6 +2,7 @@ package com.auto_insurance.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "CLAIM_TABLE")
