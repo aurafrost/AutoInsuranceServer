@@ -10,9 +10,9 @@ public class Report implements Serializable {
     @Id
     private int claimId;
 
-    @OneToOne
-    @JoinColumn(name = "claimId")
-    @MapsId
+//    @OneToOne
+//    @JoinColumn(name = "claimId")
+//    @MapsId
     private Claim claim;
 
     @Column(name = "policyNo")
