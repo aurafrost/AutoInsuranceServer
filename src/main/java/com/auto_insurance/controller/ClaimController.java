@@ -2,7 +2,6 @@ package com.auto_insurance.controller;
 
 import com.auto_insurance.dao.ClaimDao;
 import com.auto_insurance.model.Claim;
-import com.auto_insurance.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,9 +22,10 @@ public class ClaimController {
     ClaimDao claimDao;
 
     @RequestMapping(method = RequestMethod.GET)
-    ResponseEntity<List<Claim>> getAllClaim() {
-        List<Claim> list = claimDao.findAll();
-        return new ResponseEntity<>(list, HttpStatus.OK);
+    public ResponseEntity<List<Claim>> getAllClaim() {
+        List<Claim> list = (List<Claim>) claimDao.findAll();
+
+        return new ResponseEntity<>(list,HttpStatus.OK);
     }
     
     @RequestMapping(method = RequestMethod.POST)
