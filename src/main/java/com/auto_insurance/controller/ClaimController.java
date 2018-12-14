@@ -47,10 +47,18 @@ public class ClaimController {
         return new ResponseEntity<>(claim, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{claimId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/id/{claimId}", method = RequestMethod.PUT)
     public ResponseEntity<Claim> updateClaimById(@PathVariable int claimId, @RequestBody Claim claim){
         //TODO: Check if hibernate save overwrites the existing data
-    	Claim c = claimDao.save(claim);
+        Claim findClaim = claimDao.findByClaimId(claimId);
+        findClaim.setStatus(claim.getStatus());
+        findClaim.setOtherDriverLicense(claim.getOtherDriverLicense());
+        findClaim.setCarModel(claim.getCarModel());
+        findClaim.setCarMake(claim.getCarMake());
+        findClaim.setDateOfIncident(claim.getDateOfIncident());
+        findClaim.setDescription(claim.getDescription());
+        findClaim.setEstimateCostRepairs(claim.getEstimateCostRepairs());
+        Claim c = claimDao.save(findClaim);
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
 }
