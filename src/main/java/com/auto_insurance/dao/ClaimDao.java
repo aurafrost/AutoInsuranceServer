@@ -7,8 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClaimDao extends CrudRepository<Claim, String> {
-//    Claim findById(int id);
+public interface ClaimDao extends CrudRepository<Claim, Integer> {
+    Claim findByClaimId(Integer claimId);
+
     List<Claim> findAll();
-//    Claim deleteById(String email);
+
+    Claim deleteByClaimId(Integer claimId);
 }

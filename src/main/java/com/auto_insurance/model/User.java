@@ -8,7 +8,9 @@ import java.util.List;
 public class User {
 
     @Id
-    private String id;
+    @GeneratedValue
+    @Column(name = "userId")
+    private int userId;
 
     @Column(name = "email")
     private String email;
@@ -33,11 +35,9 @@ public class User {
     @Column(name = "license_plate")
     private String insured_licensePlate;
 
-
     public User() { }
 
-    public User(String id, String email, List<Claim> claim, String password, String type, String fname, String lname, String insured_phone, String insured_address, String insured_driverLicense, String insured_licensePlate) {
-        this.id = id;
+    public User(String email, List<Claim> claim, String password, String type, String fname, String lname, String insured_phone, String insured_address, String insured_driverLicense, String insured_licensePlate) {
         this.email = email;
         this.claim = claim;
         this.password = password;
@@ -50,12 +50,12 @@ public class User {
         this.insured_licensePlate = insured_licensePlate;
     }
 
-    public String getId() {
-        return id;
+    public int getId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(int userId) {
+        this.userId = userId;
     }
 
     public void setClaim(List<Claim> claim) {

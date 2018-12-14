@@ -7,8 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ReportDao extends CrudRepository<Report, String> {
-//    Report findById(int id);
+public interface ReportDao extends CrudRepository<Report, Integer> {
+    Report findByReportId(int reportId);
+
     List<Report> findAll();
-//    Report deleteById(String email);
+
+    Report deleteByReportId(int reportId);
 }

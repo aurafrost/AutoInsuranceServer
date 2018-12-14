@@ -5,13 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "CLAIM_TABLE")
 public class Claim {
+
     @Id
     @GeneratedValue
-    @Column(name = "claim_id")
-    private int claim_id;
+    @Column(name = "claimId")
+    private int claimId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     @Column(name = "policy_no")
@@ -19,7 +20,7 @@ public class Claim {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "report_id")
-    private Report report; // FK -> Report
+    private Report report;
 
     @Column(name = "status")
     private String status;
@@ -62,8 +63,8 @@ public class Claim {
         return report;
     }
 
-    public void setClaim_id(int claim_id) {
-        this.claim_id = claim_id;
+    public void setClaimId(int claimId) {
+        this.claimId = claimId;
     }
 
     public void setUser(User user) {
@@ -73,10 +74,6 @@ public class Claim {
     public void setPolicy_no(String policy_no) {
         this.policy_no = policy_no;
     }
-
-//    public void setReport(Report report) {
-//        this.report = report;
-//    }
 
     public void setStatus(String status) {
         this.status = status;
@@ -106,8 +103,8 @@ public class Claim {
         this.estimate_cost_repairs = estimate_cost_repairs;
     }
 
-    public int getClaim_id() {
-        return claim_id;
+    public int getClaimId() {
+        return claimId;
     }
 
     public User getUser() {
@@ -117,10 +114,6 @@ public class Claim {
     public String getPolicy_no() {
         return policy_no;
     }
-
-//    public Report getReport() {
-//        return report;
-//    }
 
     public String getStatus() {
         return status;

@@ -34,14 +34,33 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/{userId}", method = RequestMethod.GET)
+    public ResponseEntity<User> getUserByUserId(@PathVariable int userId) {
+        User user = userDao.findByUserId(userId);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/{email}", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteUserByEmail(@PathVariable String email){
         User user = userDao.deleteByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/{userId}", method = RequestMethod.DELETE)
+    public ResponseEntity<User> deleteUserById(@PathVariable int userId){
+        User user = userDao.deleteByUserId(userId);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/{email}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUserByEmail(@PathVariable String email, @RequestBody User user){
+        //TODO: Check if hibernate save overwrites the existing data
+        User u = userDao.save(user);
+        return new ResponseEntity<>(u, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/{userId}", method = RequestMethod.PUT)
+    public ResponseEntity<User> updateUserByEmail(@PathVariable int userId, @RequestBody User user){
         //TODO: Check if hibernate save overwrites the existing data
         User u = userDao.save(user);
         return new ResponseEntity<>(u, HttpStatus.OK);

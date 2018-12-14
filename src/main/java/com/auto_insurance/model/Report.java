@@ -5,12 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "REPORT_TABLE")
 public class Report {
+
     @Id
-    @Column(name = "report_id") //Claim's FK
-    private int report_id;
+    @GeneratedValue
+    @Column(name = "reportId")
+    private Integer reportId;
 
     @OneToOne
-    @JoinColumn(name = "report_id")
+    @JoinColumn(name = "reportId")
     private Claim claim;
 
     @Column(name = "policy_no")
@@ -26,8 +28,7 @@ public class Report {
 
     public Report(){}
 
-    public Report(int report_id, Claim claim, String policy_no, String insured_email, String claim_officer, String inspect_officer, String insured_phone) {
-        this.report_id = report_id;
+    public Report(Claim claim, String policy_no, String insured_email, String claim_officer, String inspect_officer, String insured_phone) {
         this.claim = claim;
         this.policy_no = policy_no;
         this.insured_email = insured_email;
@@ -36,9 +37,8 @@ public class Report {
         this.insured_phone = insured_phone;
     }
 
-
-    public void setReport_id(int report_id) {
-        this.report_id = report_id;
+    public void setReportId(int reportId) {
+        this.reportId = reportId;
     }
 
     public void setClaim(Claim claim) {
@@ -66,7 +66,7 @@ public class Report {
     }
 
     public int getReport_id() {
-        return report_id;
+        return reportId;
     }
 
     public Claim getClaim() {
