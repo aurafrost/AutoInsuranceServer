@@ -1,5 +1,7 @@
 package com.auto_insurance.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,11 +13,13 @@ public class Claim {
     @Column(name = "claimId")
     private int claimId;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch =  FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @OneToOne(mappedBy = "claim")
+    @OneToOne
+    @JoinColumn(name = "reportId")
     private Report report;
 
     @Column(name = "status")

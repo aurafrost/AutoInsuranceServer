@@ -10,11 +10,6 @@ public class Report implements Serializable {
     @Id
     private int claimId;
 
-    @OneToOne
-    @JoinColumn(name = "claimId")
-    @MapsId
-    private Claim claim;
-
     @Column(name = "policyNo")
     private String policyNo;
     @Column(name = "insuredEmail")
@@ -28,8 +23,8 @@ public class Report implements Serializable {
 
     public Report(){}
 
-    public Report(Claim claim, String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone) {
-        this.claim = claim;
+    public Report( String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone) {
+
         this.policyNo = policyNo;
         this.insuredEmail = insuredEmail;
         this.claimOfficer = claimOfficer;
@@ -37,9 +32,11 @@ public class Report implements Serializable {
         this.insuredPhone = insuredPhone;
     }
 
-    public void setClaim(Claim claim) {
-        this.claim = claim;
+    public void setReportId(int reportId) {
+        this.reportId = reportId;
     }
+
+
 
     public void setPolicyNo(String policyNo) {
         this.policyNo = policyNo;
@@ -61,9 +58,10 @@ public class Report implements Serializable {
         this.insuredPhone = insuredPhone;
     }
 
-    public Claim getClaim() {
-        return claim;
+    public int getReportId() {
+        return reportId;
     }
+
 
     public String getPolicyNo() {
         return policyNo;
