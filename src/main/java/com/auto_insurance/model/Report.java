@@ -11,6 +11,10 @@ public class Report {
     @Column(name = "reportId")
     private int reportId;
 
+    @PrimaryKeyJoinColumn
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    private Claim claim;
+
     @Column(name = "policyNo")
     private String policyNo;
     @Column(name = "insuredEmail")
@@ -37,7 +41,9 @@ public class Report {
         this.reportId = reportId;
     }
 
-
+    public void setClaim(Claim claim) {
+        this.claim = claim;
+    }
 
     public void setPolicyNo(String policyNo) {
         this.policyNo = policyNo;
@@ -61,6 +67,10 @@ public class Report {
 
     public int getReportId() {
         return reportId;
+    }
+
+    public Claim getClaim() {
+        return claim;
     }
 
 
