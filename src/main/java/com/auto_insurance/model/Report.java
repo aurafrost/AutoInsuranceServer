@@ -11,10 +11,6 @@ public class Report {
     @Column(name = "reportId")
     private int reportId;
 
-    @OneToOne
-    @JoinColumn(name = "reportId")
-    private Claim claim;
-
     @Column(name = "policyNo")
     private String policyNo;
     @Column(name = "insuredEmail")
@@ -28,8 +24,8 @@ public class Report {
 
     public Report(){}
 
-    public Report(Claim claim, String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone) {
-        this.claim = claim;
+    public Report( String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone) {
+
         this.policyNo = policyNo;
         this.insuredEmail = insuredEmail;
         this.claimOfficer = claimOfficer;
@@ -41,9 +37,7 @@ public class Report {
         this.reportId = reportId;
     }
 
-    public void setClaim(Claim claim) {
-        this.claim = claim;
-    }
+
 
     public void setPolicyNo(String policyNo) {
         this.policyNo = policyNo;
@@ -69,9 +63,6 @@ public class Report {
         return reportId;
     }
 
-    public Claim getClaim() {
-        return claim;
-    }
 
     public String getPolicyNo() {
         return policyNo;
