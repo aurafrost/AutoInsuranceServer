@@ -1,14 +1,15 @@
 package com.auto_insurance.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "REPORT_TABLE")
-public class Report implements Serializable {
+public class Report {
 
     @Id
-    private int claimId;
+    @GeneratedValue
+    @Column(name = "reportId")
+    private int reportId;
 
     @Column(name = "policyNo")
     private String policyNo;
