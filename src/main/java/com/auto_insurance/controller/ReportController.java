@@ -23,7 +23,7 @@ public class ReportController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Report>> getAllReport() {
-        List<Report> list = reportDao.findAll();
+        List<Report> list = (List<Report>) reportDao.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.POST)
