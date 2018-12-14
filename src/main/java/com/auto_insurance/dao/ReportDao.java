@@ -8,9 +8,9 @@ import java.util.List;
 
 @Repository
 public interface ReportDao extends CrudRepository<Report, Integer> {
-    Report findByClaimId(int claimId);
+    Report findByReportId(int reportId);
 
     List<Report> findAll();
 
-    Report deleteByClaimId(int claimId);
+    Report deleteByReportId(int reportId);
 }

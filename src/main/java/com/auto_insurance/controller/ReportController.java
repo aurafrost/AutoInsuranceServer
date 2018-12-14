@@ -34,14 +34,14 @@ public class ReportController {
     
     //fix from here
     @RequestMapping(path = "/{claimId}", method = RequestMethod.GET)
-    public ResponseEntity<Report> getReportByClaimId(@PathVariable int claimId) {
-    	Report report = reportDao.findByClaimId(claimId);
+    public ResponseEntity<Report> getReportById(@PathVariable int reportId) {
+    	Report report = reportDao.findByReportId(reportId);
         return new ResponseEntity<>(report, HttpStatus.OK);
     }    
 
     @RequestMapping(path = "/{claimId}", method = RequestMethod.DELETE)
-    public ResponseEntity<Report> deleteReportByClaimId(@PathVariable int claimId){
-    	Report report = reportDao.deleteByClaimId(claimId);
+    public ResponseEntity<Report> deleteReportById(@PathVariable int reportId){
+    	Report report = reportDao.deleteByReportId(reportId);
         return new ResponseEntity<>(report, HttpStatus.OK);
     }
 

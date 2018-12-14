@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Report implements Serializable {
 
     @Id
-    private int claimId;
+    private int reportId;
 
     @Column(name = "policyNo")
     private String policyNo;
@@ -58,9 +58,7 @@ public class Report implements Serializable {
         this.insuredPhone = insuredPhone;
     }
 
-    public Claim getClaim() {
-        return claim;
-    }
+ 
     public int getReportId() {
         return reportId;
     }

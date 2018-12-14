@@ -22,7 +22,6 @@ public class Claim {
 
     @OneToOne
     @JoinColumn(name = "reportId", nullable = false)
-    @JoinColumn(name = "reportId")
     private Report report;
 
     @Column(name = "status")
