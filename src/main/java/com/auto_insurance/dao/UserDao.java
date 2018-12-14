@@ -17,4 +17,6 @@ public interface UserDao extends CrudRepository<User, Integer> {
     User deleteByEmail(String email);
 
     User deleteByUserId(int userId);
+
+
 }

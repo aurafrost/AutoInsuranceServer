@@ -15,7 +15,6 @@ public class Claim {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @Column(name = "policyNo")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reportId")
     private Report report;
