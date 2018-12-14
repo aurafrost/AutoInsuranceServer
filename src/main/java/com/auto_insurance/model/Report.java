@@ -1,18 +1,18 @@
 package com.auto_insurance.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "REPORT_TABLE")
-public class Report {
+public class Report implements Serializable {
 
     @Id
-    @GeneratedValue
-    @Column(name = "reportId")
-    private int reportId;
+    private int claimId;
 
     @OneToOne
-    @JoinColumn(name = "reportId")
+    @JoinColumn(name = "claimId")
+    @MapsId
     private Claim claim;
 
     @Column(name = "policyNo")
@@ -37,10 +37,6 @@ public class Report {
         this.insuredPhone = insuredPhone;
     }
 
-    public void setReportId(int reportId) {
-        this.reportId = reportId;
-    }
-
     public void setClaim(Claim claim) {
         this.claim = claim;
     }
@@ -63,10 +59,6 @@ public class Report {
 
     public void setInsuredPhone(String insuredPhone) {
         this.insuredPhone = insuredPhone;
-    }
-
-    public int getReportId() {
-        return reportId;
     }
 
     public Claim getClaim() {
