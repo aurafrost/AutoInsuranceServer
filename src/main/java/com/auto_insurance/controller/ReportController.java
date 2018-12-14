@@ -45,18 +45,18 @@ public class ReportController {
         return new ResponseEntity<>(report, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{claimId}", method = RequestMethod.PUT)
-    public ResponseEntity<Report> updateReportByClaimId(@PathVariable int claimId, @RequestBody Report report){
-        //TODO: Check if hibernate save overwrites the existing data
-        Report findReport = reportDao.findByReportId(reportId);
-        findReport.setPolicyNo(report.getPolicyNo());
-        findReport.setInsuredEmail(report.getInsuredEmail());
-        findReport.setClaimOfficer(report.getClaimOfficer());
-        findReport.setInspectOfficer(report.getInspectOfficer());
-        findReport.setInsuredPhone(report.getInsuredPhone());
-        Report r = reportDao.save(findReport);
-        return new ResponseEntity<>(r, HttpStatus.OK);
-    }
+//    @RequestMapping(path = "/{claimId}", method = RequestMethod.PUT)
+//    public ResponseEntity<Report> updateReportByClaimId(@PathVariable int claimId, @RequestBody Report report){
+//        //TODO: Check if hibernate save overwrites the existing data
+//        Report findReport = reportDao.findByReportId(reportId);
+//        findReport.setPolicyNo(report.getPolicyNo());
+//        findReport.setInsuredEmail(report.getInsuredEmail());
+//        findReport.setClaimOfficer(report.getClaimOfficer());
+//        findReport.setInspectOfficer(report.getInspectOfficer());
+//        findReport.setInsuredPhone(report.getInsuredPhone());
+//        Report r = reportDao.save(findReport);
+//        return new ResponseEntity<>(r, HttpStatus.OK);
+//    }
 }
 
 
