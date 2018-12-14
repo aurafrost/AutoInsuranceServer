@@ -15,29 +15,29 @@ public class Report {
     @JoinColumn(name = "reportId")
     private Claim claim;
 
-    @Column(name = "policy_no")
-    private String policy_no;
-    @Column(name = "insured_email")
-    private String insured_email;
-    @Column(name = "claim_officer")
-    private String claim_officer;
-    @Column(name = "inspect_officer")
-    private String inspect_officer;
-    @Column(name = "insured_phone")
-    private String insured_phone;
+    @Column(name = "policyNo")
+    private String policyNo;
+    @Column(name = "insuredEmail")
+    private String insuredEmail;
+    @Column(name = "claimOfficer")
+    private String claimOfficer;
+    @Column(name = "inspectOfficer")
+    private String inspectOfficer;
+    @Column(name = "insuredPhone")
+    private String insuredPhone;
 
     public Report(){}
 
-    public Report(Claim claim, String policy_no, String insured_email, String claim_officer, String inspect_officer, String insured_phone) {
+    public Report(Claim claim, String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone) {
         this.claim = claim;
-        this.policy_no = policy_no;
-        this.insured_email = insured_email;
-        this.claim_officer = claim_officer;
-        this.inspect_officer = inspect_officer;
-        this.insured_phone = insured_phone;
+        this.policyNo = policyNo;
+        this.insuredEmail = insuredEmail;
+        this.claimOfficer = claimOfficer;
+        this.inspectOfficer = inspectOfficer;
+        this.insuredPhone = insuredPhone;
     }
 
-    public void setReportId(int reportId) {
+    public void setReportId(Integer reportId) {
         this.reportId = reportId;
     }
 
@@ -45,27 +45,27 @@ public class Report {
         this.claim = claim;
     }
 
-    public void setPolicy_no(String policy_no) {
-        this.policy_no = policy_no;
+    public void setPolicyNo(String policyNo) {
+        this.policyNo = policyNo;
     }
 
-    public void setInsured_email(String insured_email) {
-        this.insured_email = insured_email;
+    public void setInsuredEmail(String insuredEmail) {
+        this.insuredEmail = insuredEmail;
     }
 
-    public void setClaim_officer(String claim_officer) {
-        this.claim_officer = claim_officer;
+    public void setClaimOfficer(String claimOfficer) {
+        this.claimOfficer = claimOfficer;
     }
 
-    public void setInspect_officer(String inspect_officer) {
-        this.inspect_officer = inspect_officer;
+    public void setInspectOfficer(String inspectOfficer) {
+        this.inspectOfficer = inspectOfficer;
     }
 
-    public void setInsured_phone(String insured_phone) {
-        this.insured_phone = insured_phone;
+    public void setInsuredPhone(String insuredPhone) {
+        this.insuredPhone = insuredPhone;
     }
 
-    public int getReport_id() {
+    public Integer getReportId() {
         return reportId;
     }
 
@@ -73,23 +73,23 @@ public class Report {
         return claim;
     }
 
-    public String getPolicy_no() {
-        return policy_no;
+    public String getPolicyNo() {
+        return policyNo;
     }
 
-    public String getInsured_email() {
-        return insured_email;
+    public String getInsuredEmail() {
+        return insuredEmail;
     }
 
-    public String getClaim_officer() {
-        return claim_officer;
+    public String getClaimOfficer() {
+        return claimOfficer;
     }
 
-    public String getInspect_officer() {
-        return inspect_officer;
+    public String getInspectOfficer() {
+        return inspectOfficer;
     }
 
-    public String getInsured_phone() {
-        return insured_phone;
+    public String getInsuredPhone() {
+        return insuredPhone;
     }
 }

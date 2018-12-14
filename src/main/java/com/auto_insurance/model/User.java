@@ -26,82 +26,44 @@ public class User {
     private String fname;
     @Column(name = "lname")
     private String lname;
-    @Column(name = "insured_phone")
-    private String insured_phone;
-    @Column(name = "insured_address")
-    private String insured_address;
-    @Column(name = "driver_license")
-    private String insured_driverLicense;
-    @Column(name = "license_plate")
-    private String insured_licensePlate;
+    @Column(name = "phone")
+    private String phone;
+    @Column(name = "address")
+    private String address;
+    @Column(name = "driverLicense")
+    private String driverLicense;
+    @Column(name = "licensePlate")
+    private String licensePlate;
 
     public User() { }
 
-    public User(String email, List<Claim> claim, String password, String type, String fname, String lname, String insured_phone, String insured_address, String insured_driverLicense, String insured_licensePlate) {
+    public User(String email, List<Claim> claim, String password, String type, String fname, String lname, String phone, String address, String driverLicense, String licensePlate) {
         this.email = email;
         this.claim = claim;
         this.password = password;
         this.type = type;
         this.fname = fname;
         this.lname = lname;
-        this.insured_phone = insured_phone;
-        this.insured_address = insured_address;
-        this.insured_driverLicense = insured_driverLicense;
-        this.insured_licensePlate = insured_licensePlate;
+        this.phone = phone;
+        this.address = address;
+        this.driverLicense = driverLicense;
+        this.licensePlate = licensePlate;
     }
 
-    public int getId() {
-        return userId;
-    }
-
-    public void setId(int userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setClaim(List<Claim> claim) {
         this.claim = claim;
     }
 
-    public void setInsured_phone(String insured_phone) {
-        this.insured_phone = insured_phone;
-    }
-
-    public void setInsured_address(String insured_address) {
-        this.insured_address = insured_address;
-    }
-
-    public void setInsured_driverLicense(String insured_driverLicense) {
-        this.insured_driverLicense = insured_driverLicense;
-    }
-
-    public void setInsured_licensePlate(String insured_licensePlate) {
-        this.insured_licensePlate = insured_licensePlate;
-    }
-
-
-
-    public List<Claim> getClaim() {
-        return claim;
-    }
-
-    public String getInsured_phone() {
-        return insured_phone;
-    }
-
-    public String getInsured_address() {
-        return insured_address;
-    }
-
-    public String getInsured_driverLicense() {
-        return insured_driverLicense;
-    }
-
-    public String getInsured_licensePlate() {
-        return insured_licensePlate;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setType(String type) {
@@ -116,12 +78,36 @@ public class User {
         this.lname = lname;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setDriverLicense(String driverLicense) {
+        this.driverLicense = driverLicense;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public List<Claim> getClaim() {
+        return claim;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getType() {
@@ -136,7 +122,19 @@ public class User {
         return lname;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getDriverLicense() {
+        return driverLicense;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
     }
 }
