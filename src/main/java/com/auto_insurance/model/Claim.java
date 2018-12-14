@@ -1,5 +1,7 @@
 package com.auto_insurance.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,6 +22,7 @@ public class Claim {
 
     @OneToOne
     @JoinColumn(name = "reportId", nullable = false)
+    @JoinColumn(name = "reportId")
     private Report report;
 
     @Column(name = "status")

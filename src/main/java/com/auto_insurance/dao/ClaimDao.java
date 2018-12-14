@@ -10,7 +10,5 @@ import java.util.List;
 public interface ClaimDao extends CrudRepository<Claim, Integer> {
     Claim findByClaimId(int claimId);
 
-    List<Claim> findAll();
-
     Claim deleteByClaimId(int claimId);
 }

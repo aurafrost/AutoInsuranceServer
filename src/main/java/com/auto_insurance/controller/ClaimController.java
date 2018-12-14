@@ -23,10 +23,9 @@ public class ClaimController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Claim>> getAllClaim() {
-    	System.out.println("Hit");
         List<Claim> list = (List<Claim>) claimDao.findAll();
-
-        return new ResponseEntity<>(list,HttpStatus.OK);
+        System.out.println(list.get(0).getCarModel());
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
     
     @RequestMapping(method = RequestMethod.POST)
