@@ -33,20 +33,20 @@ public class ReportController {
     }
     
     //fix from here
-    @RequestMapping(path = "/{reportId}", method = RequestMethod.GET)
-    public ResponseEntity<Report> getReportById(@PathVariable int reportId) {
-    	Report report = reportDao.findByReportId(reportId);
+    @RequestMapping(path = "/{claimId}", method = RequestMethod.GET)
+    public ResponseEntity<Report> getReportByClaimId(@PathVariable int claimId) {
+    	Report report = reportDao.findByClaimId(claimId);
         return new ResponseEntity<>(report, HttpStatus.OK);
     }    
 
-    @RequestMapping(path = "/{reportId}", method = RequestMethod.DELETE)
-    public ResponseEntity<Report> deleteReportById(@PathVariable int reportId){
-    	Report report = reportDao.deleteByReportId(reportId);
+    @RequestMapping(path = "/{claimId}", method = RequestMethod.DELETE)
+    public ResponseEntity<Report> deleteReportByClaimId(@PathVariable int claimId){
+    	Report report = reportDao.deleteByClaimId(claimId);
         return new ResponseEntity<>(report, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/id/{reportId}", method = RequestMethod.PUT)
-    public ResponseEntity<Report> updateReportByEmail(@PathVariable int reportId, @RequestBody Report report){
+    @RequestMapping(path = "/{claimId}", method = RequestMethod.PUT)
+    public ResponseEntity<Report> updateReportByClaimId(@PathVariable int claimId, @RequestBody Report report){
         //TODO: Check if hibernate save overwrites the existing data
         Report findReport = reportDao.findByReportId(reportId);
         findReport.setPolicyNo(report.getPolicyNo());

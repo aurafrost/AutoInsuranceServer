@@ -11,12 +11,11 @@ public class Claim {
     @Column(name = "claimId")
     private int claimId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch =  FetchType.LAZY)
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reportId")
+    @OneToOne(mappedBy = "claim")
     private Report report;
 
     @Column(name = "status")
