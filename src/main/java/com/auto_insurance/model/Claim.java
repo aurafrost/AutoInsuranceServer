@@ -2,6 +2,7 @@ package com.auto_insurance.model;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "CLAIM_TABLE")
 public class Claim {
@@ -11,11 +12,13 @@ public class Claim {
     @Column(name = "claimId")
     private int claimId;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch =  FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @OneToOne(mappedBy = "claim")
+    @OneToOne
+    @JoinColumn(name = "reportId", nullable = false)
     private Report report;
 
     @Column(name = "status")

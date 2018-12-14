@@ -23,6 +23,7 @@ public class ClaimController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Claim>> getAllClaim() {
+    	System.out.println("Hit");
         List<Claim> list = (List<Claim>) claimDao.findAll();
 
         return new ResponseEntity<>(list,HttpStatus.OK);
