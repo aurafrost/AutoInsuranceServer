@@ -1,9 +1,7 @@
 package com.auto_insurance.controller;
 
 import com.auto_insurance.dao.ReportDao;
-import com.auto_insurance.model.Claim;
 import com.auto_insurance.model.Report;
-import com.auto_insurance.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +22,7 @@ public class ReportController {
     ReportDao reportDao;
 
     @RequestMapping(method = RequestMethod.GET)
-    ResponseEntity<List<Report>> getAllReport() {
+    public ResponseEntity<List<Report>> getAllReport() {
         List<Report> list = reportDao.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
