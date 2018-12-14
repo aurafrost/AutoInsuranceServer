@@ -29,7 +29,7 @@ public class ClaimController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Claim> postUser(@RequestBody Claim claim) {
+    public ResponseEntity<Claim> postClaim(@RequestBody Claim claim) {
         Claim c = claimDao.save(claim);
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
