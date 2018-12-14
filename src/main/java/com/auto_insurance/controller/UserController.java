@@ -28,41 +28,52 @@ public class UserController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{email}", method = RequestMethod.GET)
+    @RequestMapping(path = "/email/{email}", method = RequestMethod.GET)
     public ResponseEntity<User> getUserByEmail(@PathVariable String email){
         User user = userDao.findByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{userId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/id/{userId}", method = RequestMethod.GET)
     public ResponseEntity<User> getUserByUserId(@PathVariable int userId) {
         User user = userDao.findByUserId(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{email}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/email/{email}", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteUserByEmail(@PathVariable String email){
         User user = userDao.deleteByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{userId}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/id/{userId}", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteUserById(@PathVariable int userId){
         User user = userDao.deleteByUserId(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{email}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/email/{email}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUserByEmail(@PathVariable String email, @RequestBody User user){
         //TODO: Check if hibernate save overwrites the existing data
+
+
         User u = userDao.save(user);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{userId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/id/{userId}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUserByEmail(@PathVariable int userId, @RequestBody User user){
         //TODO: Check if hibernate save overwrites the existing data
-        User u = userDao.save(user);
+        User findUser = userDao.findByUserId(userId);
+        findUser.setPassword(user.getPassword());
+        findUser.setAddress(user.getAddress());
+        findUser.setEmail(user.getEmail());
+        findUser.setFname(user.getFname());
+        findUser.setLname(user.getLname());
+        findUser.setPhone(user.getPhone());
+        findUser.setDriverLicense(user.getDriverLicense());
+        findUser.setLicensePlate(user.getLicensePlate());
+        User u = userDao.save(findUser);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 }
