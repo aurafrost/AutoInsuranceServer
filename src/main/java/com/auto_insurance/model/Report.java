@@ -9,7 +9,7 @@ public class Report {
     @Id
     @GeneratedValue
     @Column(name = "reportId")
-    private Integer reportId;
+    private int reportId;
 
     @OneToOne
     @JoinColumn(name = "reportId")
@@ -37,7 +37,7 @@ public class Report {
         this.insuredPhone = insuredPhone;
     }
 
-    public void setReportId(Integer reportId) {
+    public void setReportId(int reportId) {
         this.reportId = reportId;
     }
 
@@ -65,7 +65,7 @@ public class Report {
         this.insuredPhone = insuredPhone;
     }
 
-    public Integer getReportId() {
+    public int getReportId() {
         return reportId;
     }
 
