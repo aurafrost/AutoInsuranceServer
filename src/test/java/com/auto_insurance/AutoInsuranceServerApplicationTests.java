@@ -1,4 +1,4 @@
-package com.auto_insurance.springbootwebsetup;
+package com.auto_insurance;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
