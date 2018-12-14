@@ -8,9 +8,9 @@ import java.util.List;
 
 @Repository
 public interface ClaimDao extends CrudRepository<Claim, Integer> {
-    Claim findByClaimId(Integer claimId);
+    Claim findByClaimId(int claimId);
 
     List<Claim> findAll();
 
-    Claim deleteByClaimId(Integer claimId);
+    Claim deleteByClaimId(int claimId);
 }
