@@ -18,9 +18,9 @@ public class Claim {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @OneToOne
-    @JoinColumn(name = "reportId")
-    private Report report;
+//    @OneToOne
+//    @JoinColumn(name = "reportId")
+//    private Report report;
 
     @Column(name = "status")
     private String status;
@@ -42,9 +42,9 @@ public class Claim {
 
     public Claim() {}
 
-    public Claim(User user, Report report, String status, String otherDriverLicense, String carModel, String carMake, String dateOfIncident, String description, double estimateCostRepairs) {
+    public Claim(User user, String status, String otherDriverLicense, String carModel, String carMake, String dateOfIncident, String description, double estimateCostRepairs) {
         this.user = user;
-        this.report = report;
+//        this.report = report;
         this.status = status;
         this.otherDriverLicense = otherDriverLicense;
         this.carModel = carModel;
@@ -62,9 +62,9 @@ public class Claim {
         this.user = user;
     }
 
-    public void setReport(Report report) {
-        this.report = report;
-    }
+//    public void setReport(Report report) {
+//        this.report = report;
+//    }
 
     public void setStatus(String status) {
         this.status = status;
@@ -102,9 +102,9 @@ public class Claim {
         return user;
     }
 
-    public Report getReport() {
-        return report;
-    }
+//    public Report getReport() {
+//        return report;
+//    }
 
     public String getStatus() {
         return status;
