@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/report")
+@RequestMapping(path = "/reports")
 public class ReportController {
 
     @Autowired
@@ -45,7 +45,7 @@ public class ReportController {
         return new ResponseEntity<>(report, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/id/{reportId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/{reportId}", method = RequestMethod.PUT)
     public ResponseEntity<Report> updateReportByEmail(@PathVariable int reportId, @RequestBody Report report){
         //TODO: Check if hibernate save overwrites the existing data
         Report findReport = reportDao.findByReportId(reportId);
