@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReportDao extends CrudRepository<Report, Integer> {
-    Report findByClaimId(int claimId);
+    Report findByReportId(int reportId);
 
     Report deleteByReportId(int reportId);
     
