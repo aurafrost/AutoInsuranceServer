@@ -8,15 +8,17 @@ import java.util.List;
 
 @Repository
 public interface UserDao extends CrudRepository<User, Integer> {
+    List<User> findAllByType(String type);
+
     User findByEmail(String email);
 
     User findByUserId(int userId);
 
-    List<User> findAll();
-
     User deleteByEmail(String email);
 
     User deleteByUserId(int userId);
+
+    User findByUserIdAndType(int userId, String type);
 
 
 }

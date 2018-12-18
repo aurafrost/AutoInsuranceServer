@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/claim")
+@RequestMapping(path = "/claims")
 public class ClaimController {
 
     @Autowired
@@ -47,7 +47,7 @@ public class ClaimController {
         return new ResponseEntity<>(claim, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/id/{claimId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/{claimId}", method = RequestMethod.PUT)
     public ResponseEntity<Claim> updateClaimById(@PathVariable int claimId, @RequestBody Claim claim){
         //TODO: Check if hibernate save overwrites the existing data
         Claim findClaim = claimDao.findByClaimId(claimId);
