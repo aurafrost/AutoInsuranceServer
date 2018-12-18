@@ -25,16 +25,22 @@ public class Report {
     private String inspectOfficer;
     @Column(name = "insuredPhone")
     private String insuredPhone;
+    @Column(name = "estimate")
+    private double estimate;
+    @Column(name = "evaluation")
+    private String evaluation;
 
     public Report(){}
 
-    public Report( String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone) {
-
+    public Report(Claim claim, String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone, double estimate, String evaluation) {
+        this.claim = claim;
         this.policyNo = policyNo;
         this.insuredEmail = insuredEmail;
         this.claimOfficer = claimOfficer;
         this.inspectOfficer = inspectOfficer;
         this.insuredPhone = insuredPhone;
+        this.estimate = estimate;
+        this.evaluation = evaluation;
     }
 
     public void setReportId(int reportId) {
@@ -65,6 +71,14 @@ public class Report {
         this.insuredPhone = insuredPhone;
     }
 
+    public void setEstimate(double estimate) {
+        this.estimate = estimate;
+    }
+
+    public void setEvaluation(String evaluation) {
+        this.evaluation = evaluation;
+    }
+
     public int getReportId() {
         return reportId;
     }
@@ -72,7 +86,6 @@ public class Report {
     public Claim getClaim() {
         return claim;
     }
-
 
     public String getPolicyNo() {
         return policyNo;
@@ -92,5 +105,13 @@ public class Report {
 
     public String getInsuredPhone() {
         return insuredPhone;
+    }
+
+    public double getEstimate() {
+        return estimate;
+    }
+
+    public String getEvaluation() {
+        return evaluation;
     }
 }
