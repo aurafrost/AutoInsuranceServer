@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/users")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -89,6 +89,7 @@ public class UserController {
     @RequestMapping(path = "/id/{userId}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUserByEmail(@PathVariable int userId, @RequestBody User user){
         User findUser = userDao.findByUserId(userId);
+        findUser.setPolicyNo(user.getPolicyNo());
         findUser.setPassword(user.getPassword());
         findUser.setAddress(user.getAddress());
         findUser.setEmail(user.getEmail());
