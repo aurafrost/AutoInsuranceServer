@@ -15,8 +15,6 @@ public class Report {
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     private Claim claim;
 
-    @Column(name = "policyNo")
-    private String policyNo;
     @Column(name = "insuredEmail")
     private String insuredEmail;
     @Column(name = "claimOfficer")
@@ -32,9 +30,8 @@ public class Report {
 
     public Report(){}
 
-    public Report(Claim claim, String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone, double estimate, String evaluation) {
+    public Report(Claim claim, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone, double estimate, String evaluation) {
         this.claim = claim;
-        this.policyNo = policyNo;
         this.insuredEmail = insuredEmail;
         this.claimOfficer = claimOfficer;
         this.inspectOfficer = inspectOfficer;
@@ -49,10 +46,6 @@ public class Report {
 
     public void setClaim(Claim claim) {
         this.claim = claim;
-    }
-
-    public void setPolicyNo(String policyNo) {
-        this.policyNo = policyNo;
     }
 
     public void setInsuredEmail(String insuredEmail) {
@@ -85,10 +78,6 @@ public class Report {
 
     public Claim getClaim() {
         return claim;
-    }
-
-    public String getPolicyNo() {
-        return policyNo;
     }
 
     public String getInsuredEmail() {

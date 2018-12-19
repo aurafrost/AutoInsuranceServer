@@ -32,11 +32,14 @@ public class User {
     private String address;
     @Column(name = "status")
     private String status;
+    @Column(name = "policyNo")
+    private String policyNo;
 
     public User() { }
 
-    public User(String email, List<Claim> claim, String password, String type, String fname, String lname, String phone, String address, String status) {
+    public User(String email, String policyNo, List<Claim> claim, String password, String type, String fname, String lname, String phone, String address, String status) {
         this.email = email;
+        this.policyNo = policyNo;
         this.claim = claim;
         this.password = password;
         this.type = type;
@@ -45,6 +48,14 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.status = status;
+    }
+
+    public String getPolicyNo() {
+        return policyNo;
+    }
+
+    public void setPolicyNo(String policyNo) {
+        this.policyNo = policyNo;
     }
 
     public String getStatus() {
