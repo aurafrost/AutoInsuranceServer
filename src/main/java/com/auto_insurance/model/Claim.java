@@ -20,10 +20,6 @@ public class Claim {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-//    @OneToOne
-//    @JoinColumn(name = "reportId")
-//    private Report report;
-
     @Column(name = "status")
     private String status;
 
@@ -39,21 +35,17 @@ public class Claim {
     private String dateOfIncident;
     @Column(name = "description")
     private String description;
-    @Column(name = "estimateCostRepairs")
-    private double estimateCostRepairs;
 
     public Claim() {}
 
-    public Claim(User user, String status, String otherDriverLicense, String carModel, String carMake, String dateOfIncident, String description, double estimateCostRepairs) {
+    public Claim(User user, String status, String otherDriverLicense, String carModel, String carMake, String dateOfIncident, String description) {
         this.user = user;
-//        this.report = report;
         this.status = status;
         this.otherDriverLicense = otherDriverLicense;
         this.carModel = carModel;
         this.carMake = carMake;
         this.dateOfIncident = dateOfIncident;
         this.description = description;
-        this.estimateCostRepairs = estimateCostRepairs;
     }
 
     public void setClaimId(int claimId) {
@@ -63,10 +55,6 @@ public class Claim {
     public void setUser(User user) {
         this.user = user;
     }
-
-//    public void setReport(Report report) {
-//        this.report = report;
-//    }
 
     public void setStatus(String status) {
         this.status = status;
@@ -92,10 +80,6 @@ public class Claim {
         this.description = description;
     }
 
-    public void setEstimateCostRepairs(double estimateCostRepairs) {
-        this.estimateCostRepairs = estimateCostRepairs;
-    }
-
     public int getClaimId() {
         return claimId;
     }
@@ -103,10 +87,6 @@ public class Claim {
     public User getUser() {
         return user;
     }
-
-//    public Report getReport() {
-//        return report;
-//    }
 
     public String getStatus() {
         return status;
@@ -130,9 +110,5 @@ public class Claim {
 
     public String getDescription() {
         return description;
-    }
-
-    public double getEstimateCostRepairs() {
-        return estimateCostRepairs;
     }
 }
