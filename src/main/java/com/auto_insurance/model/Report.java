@@ -10,6 +10,10 @@ public class Report implements Serializable {
     @Id
     private int reportId;
 
+    @PrimaryKeyJoinColumn
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    private Claim claim;
+
     @Column(name = "policyNo")
     private String policyNo;
     @Column(name = "insuredEmail")
@@ -36,7 +40,9 @@ public class Report implements Serializable {
         this.reportId = reportId;
     }
 
-
+    public void setClaim(Claim claim) {
+        this.claim = claim;
+    }
 
     public void setPolicyNo(String policyNo) {
         this.policyNo = policyNo;
@@ -61,6 +67,10 @@ public class Report implements Serializable {
  
     public int getReportId() {
         return reportId;
+    }
+
+    public Claim getClaim() {
+        return claim;
     }
 
 

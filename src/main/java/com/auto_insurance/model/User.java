@@ -30,14 +30,12 @@ public class User {
     private String phone;
     @Column(name = "address")
     private String address;
-    @Column(name = "driverLicense")
-    private String driverLicense;
-    @Column(name = "licensePlate")
-    private String licensePlate;
+    @Column(name = "status")
+    private String status;
 
     public User() { }
 
-    public User(String email, List<Claim> claim, String password, String type, String fname, String lname, String phone, String address, String driverLicense, String licensePlate) {
+    public User(String email, List<Claim> claim, String password, String type, String fname, String lname, String phone, String address, String status) {
         this.email = email;
         this.claim = claim;
         this.password = password;
@@ -46,8 +44,15 @@ public class User {
         this.lname = lname;
         this.phone = phone;
         this.address = address;
-        this.driverLicense = driverLicense;
-        this.licensePlate = licensePlate;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setUserId(int userId) {
@@ -86,14 +91,6 @@ public class User {
         this.address = address;
     }
 
-    public void setDriverLicense(String driverLicense) {
-        this.driverLicense = driverLicense;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
     public int getUserId() {
         return userId;
     }
@@ -128,13 +125,5 @@ public class User {
 
     public String getAddress() {
         return address;
-    }
-
-    public String getDriverLicense() {
-        return driverLicense;
-    }
-
-    public String getLicensePlate() {
-        return licensePlate;
     }
 }
