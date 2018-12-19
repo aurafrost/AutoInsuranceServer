@@ -53,6 +53,8 @@ public class ReportController {
         findReport.setInsuredEmail(report.getInsuredEmail());
         findReport.setClaimOfficer(report.getClaimOfficer());
         findReport.setInspectOfficer(report.getInspectOfficer());
+        findReport.setEstimate(report.getEstimate());
+        findReport.setEvaluation(report.getEvaluation());
         findReport.setInsuredPhone(report.getInsuredPhone());
         Report r = reportDao.save(findReport);
         return new ResponseEntity<>(r, HttpStatus.OK);

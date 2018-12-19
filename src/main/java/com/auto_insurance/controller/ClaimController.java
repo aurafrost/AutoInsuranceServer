@@ -57,7 +57,6 @@ public class ClaimController {
         findClaim.setCarMake(claim.getCarMake());
         findClaim.setDateOfIncident(claim.getDateOfIncident());
         findClaim.setDescription(claim.getDescription());
-        findClaim.setEstimateCostRepairs(claim.getEstimateCostRepairs());
         Claim c = claimDao.save(findClaim);
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
