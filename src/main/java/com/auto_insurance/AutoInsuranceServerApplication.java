@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @SpringBootApplication
 @ComponentScan("com.auto_insurance.*")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class AutoInsuranceServerApplication {
 
 	public static void main(String[] args) {
