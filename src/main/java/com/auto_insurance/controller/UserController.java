@@ -55,6 +55,7 @@ public class UserController {
 
     @RequestMapping(path = "/email/{email}", method = RequestMethod.GET)
     public ResponseEntity<User> getUserByEmail(@PathVariable String email){
+        System.out.println(email);
         User user = userDao.findByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -90,7 +91,6 @@ public class UserController {
     public ResponseEntity<User> updateUserByEmail(@PathVariable int userId, @RequestBody User user){
         User findUser = userDao.findByUserId(userId);
         findUser.setPolicyNo(user.getPolicyNo());
-        findUser.setPassword(user.getPassword());
         findUser.setAddress(user.getAddress());
         findUser.setEmail(user.getEmail());
         findUser.setFname(user.getFname());
