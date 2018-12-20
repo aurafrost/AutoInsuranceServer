@@ -14,7 +14,7 @@ public class Claim {
     private int claimId;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 

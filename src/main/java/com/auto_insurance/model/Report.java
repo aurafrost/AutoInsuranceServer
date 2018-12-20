@@ -12,7 +12,7 @@ public class Report {
     private int reportId;
 
     @PrimaryKeyJoinColumn
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(cascade = CascadeType.MERGE, optional = false)
     private Claim claim;
 
     @Column(name = "insuredEmail")
