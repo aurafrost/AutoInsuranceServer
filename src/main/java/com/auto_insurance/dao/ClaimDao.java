@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClaimDao extends CrudRepository<Claim, Integer> {
     Claim findByClaimId(int claimId);
-
     Claim deleteByClaimId(int claimId);
 }

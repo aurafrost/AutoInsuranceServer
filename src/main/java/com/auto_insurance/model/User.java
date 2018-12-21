@@ -12,14 +12,12 @@ public class User {
     @Column(name = "userId")
     private int userId;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @OneToMany(mappedBy = "user")
     private List<Claim> claim;
 
-    @Column(name = "password")
-    private String password;
     @Column(name = "type")
     private String type;
     @Column(name = "fname")
@@ -41,7 +39,6 @@ public class User {
         this.email = email;
         this.policyNo = policyNo;
         this.claim = claim;
-        this.password = password;
         this.type = type;
         this.fname = fname;
         this.lname = lname;
@@ -78,10 +75,6 @@ public class User {
         this.claim = claim;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setType(String type) {
         this.type = type;
     }
@@ -112,10 +105,6 @@ public class User {
 
     public List<Claim> getClaim() {
         return claim;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String getType() {
