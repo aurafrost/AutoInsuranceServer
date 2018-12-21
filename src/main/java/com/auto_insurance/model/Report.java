@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class Report {
 
     @Id
-    @GeneratedValue
     @Column(name = "reportId")
     private int reportId;
 

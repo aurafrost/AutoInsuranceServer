@@ -1,6 +1,7 @@
 package com.auto_insurance.controller;
 
 import com.auto_insurance.dao.UserDao;
+import com.auto_insurance.model.Claim;
 import com.auto_insurance.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,6 +47,13 @@ public class UserController {
         List<User> list = userDao.findAllByType("InspectOfficer");
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/claim", method = RequestMethod.POST)
+    public ResponseEntity<User> getUserByClaim(@RequestBody Claim claim){
+        User user = userDao.findByClaim(claim);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
 
     @RequestMapping(path = "/{type}/{userId}", method = RequestMethod.GET)
     public ResponseEntity<User> getUserByUserIdAndType(@PathVariable int userId, @PathVariable String type){
