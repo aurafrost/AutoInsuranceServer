@@ -15,7 +15,7 @@ public class Claim {
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "userId")
     private User user;
 
     @Column(name = "status")
@@ -108,5 +108,18 @@ public class Claim {
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public String toString() {
+        return "Claim{" +
+                "claimId=" + claimId +
+                ", status='" + status + '\'' +
+                ", otherDriverLicense='" + otherDriverLicense + '\'' +
+                ", carModel='" + carModel + '\'' +
+                ", carMake='" + carMake + '\'' +
+                ", dateOfIncident='" + dateOfIncident + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
