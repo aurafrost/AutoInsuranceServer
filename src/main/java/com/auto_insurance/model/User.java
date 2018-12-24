@@ -12,14 +12,12 @@ public class User {
     @Column(name = "userId")
     private int userId;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @OneToMany(mappedBy = "user")
     private List<Claim> claim;
 
-    @Column(name = "password")
-    private String password;
     @Column(name = "type")
     private String type;
     @Column(name = "fname")
@@ -32,19 +30,29 @@ public class User {
     private String address;
     @Column(name = "status")
     private String status;
+    @Column(name = "policyNo")
+    private String policyNo;
 
     public User() { }
 
-    public User(String email, List<Claim> claim, String password, String type, String fname, String lname, String phone, String address, String status) {
+    public User(String email, String policyNo, List<Claim> claim, String password, String type, String fname, String lname, String phone, String address, String status) {
         this.email = email;
+        this.policyNo = policyNo;
         this.claim = claim;
-        this.password = password;
         this.type = type;
         this.fname = fname;
         this.lname = lname;
         this.phone = phone;
         this.address = address;
         this.status = status;
+    }
+
+    public String getPolicyNo() {
+        return policyNo;
+    }
+
+    public void setPolicyNo(String policyNo) {
+        this.policyNo = policyNo;
     }
 
     public String getStatus() {
@@ -65,10 +73,6 @@ public class User {
 
     public void setClaim(List<Claim> claim) {
         this.claim = claim;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setType(String type) {
@@ -101,10 +105,6 @@ public class User {
 
     public List<Claim> getClaim() {
         return claim;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String getType() {

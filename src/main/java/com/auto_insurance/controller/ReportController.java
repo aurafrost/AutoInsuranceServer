@@ -6,16 +6,13 @@ import com.auto_insurance.model.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/reports")
+@CrossOrigin(origins = "*")
 public class ReportController {
 
     @Autowired
@@ -33,13 +30,13 @@ public class ReportController {
     }
     
     //fix from here
-    @RequestMapping(path = "/{claimId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/{reportId}", method = RequestMethod.GET)
     public ResponseEntity<Report> getReportById(@PathVariable int reportId) {
     	Report report = reportDao.findByReportId(reportId);
         return new ResponseEntity<>(report, HttpStatus.OK);
     }    
 
-    @RequestMapping(path = "/{claimId}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/{reportId}", method = RequestMethod.DELETE)
     public ResponseEntity<Report> deleteReportById(@PathVariable int reportId){
     	Report report = reportDao.deleteByReportId(reportId);
         return new ResponseEntity<>(report, HttpStatus.OK);
@@ -49,7 +46,6 @@ public class ReportController {
     public ResponseEntity<Report> updateReportByEmail(@PathVariable int reportId, @RequestBody Report report){
         //TODO: Check if hibernate save overwrites the existing data
         Report findReport = reportDao.findByReportId(reportId);
-        findReport.setPolicyNo(report.getPolicyNo());
         findReport.setInsuredEmail(report.getInsuredEmail());
         findReport.setClaimOfficer(report.getClaimOfficer());
         findReport.setInspectOfficer(report.getInspectOfficer());

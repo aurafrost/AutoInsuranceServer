@@ -1,21 +1,19 @@
 package com.auto_insurance.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "REPORT_TABLE")
-public class Report implements Serializable {
+public class Report {
 
     @Id
+    @Column(name = "reportId")
     private int reportId;
 
     @PrimaryKeyJoinColumn
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     private Claim claim;
 
-    @Column(name = "policyNo")
-    private String policyNo;
     @Column(name = "insuredEmail")
     private String insuredEmail;
     @Column(name = "claimOfficer")
@@ -31,9 +29,8 @@ public class Report implements Serializable {
 
     public Report(){}
 
-    public Report(Claim claim, String policyNo, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone, double estimate, String evaluation) {
+    public Report(Claim claim, String insuredEmail, String claimOfficer, String inspectOfficer, String insuredPhone, double estimate, String evaluation) {
         this.claim = claim;
-        this.policyNo = policyNo;
         this.insuredEmail = insuredEmail;
         this.claimOfficer = claimOfficer;
         this.inspectOfficer = inspectOfficer;
@@ -50,8 +47,8 @@ public class Report implements Serializable {
         this.claim = claim;
     }
 
-    public void setPolicyNo(String policyNo) {
-        this.policyNo = policyNo;
+    public void setClaim(Claim claim) {
+        this.claim = claim;
     }
 
     public void setInsuredEmail(String insuredEmail) {
@@ -84,10 +81,6 @@ public class Report implements Serializable {
 
     public Claim getClaim() {
         return claim;
-    }
-
-    public String getPolicyNo() {
-        return policyNo;
     }
 
     public String getInsuredEmail() {

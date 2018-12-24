@@ -1,5 +1,6 @@
 package com.auto_insurance.dao;
 
+import com.auto_insurance.model.Claim;
 import com.auto_insurance.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,8 @@ public interface UserDao extends CrudRepository<User, Integer> {
     User findByEmail(String email);
 
     User findByUserId(int userId);
+
+    User findByClaim(Claim claim);
 
     User deleteByEmail(String email);
 

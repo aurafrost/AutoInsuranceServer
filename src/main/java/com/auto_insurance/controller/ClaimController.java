@@ -1,43 +1,52 @@
 package com.auto_insurance.controller;
 
 import com.auto_insurance.dao.ClaimDao;
+import com.auto_insurance.dao.UserDao;
 import com.auto_insurance.model.Claim;
 
+import com.auto_insurance.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/claims")
+@CrossOrigin(origins = "*")
 public class ClaimController {
 
     @Autowired
     ClaimDao claimDao;
 
+    @Autowired
+    UserDao userDao;
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Claim>> getAllClaim() {
         List<Claim> list = (List<Claim>) claimDao.findAll();
-        System.out.println(list.get(0).getCarModel());
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
     
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Claim> postClaim(@RequestBody Claim claim) {
+    @RequestMapping(path = "/{userId}", method = RequestMethod.POST)
+    public ResponseEntity<Claim> postClaim(@PathVariable("userId") int userId, @RequestBody Claim claim) {
+        System.out.println(claim.toString());
+
+        User user = userDao.findByUserId(userId);
+        claim.setUser(user);
+
         Claim c = claimDao.save(claim);
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
-    
-    //fix from here
+
     @RequestMapping(path = "/{claimId}", method = RequestMethod.GET)
     public ResponseEntity<Claim> getClaimById(@PathVariable int claimId) {
     	Claim claim = claimDao.findByClaimId(claimId);
+        System.out.println(claim.getUser().getUserId());
+        User user=claim.getUser();
+
+        claim.setUser(user);
         return new ResponseEntity<>(claim, HttpStatus.OK);
     }    
 

@@ -9,4 +9,5 @@ public interface ReportDao extends CrudRepository<Report, Integer> {
     Report findByReportId(int reportId);
 
     Report deleteByReportId(int reportId);
+    
 }

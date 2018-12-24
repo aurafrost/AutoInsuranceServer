@@ -1,6 +1,7 @@
 package com.auto_insurance.controller;
 
 import com.auto_insurance.dao.UserDao;
+import com.auto_insurance.model.Claim;
 import com.auto_insurance.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/users")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -47,6 +48,13 @@ public class UserController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/claim", method = RequestMethod.POST)
+    public ResponseEntity<User> getUserByClaim(@RequestBody Claim claim){
+        User user = userDao.findByClaim(claim);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+
     @RequestMapping(path = "/{type}/{userId}", method = RequestMethod.GET)
     public ResponseEntity<User> getUserByUserIdAndType(@PathVariable int userId, @PathVariable String type){
         User user = userDao.findByUserIdAndType(userId, type);
@@ -55,6 +63,7 @@ public class UserController {
 
     @RequestMapping(path = "/email/{email}", method = RequestMethod.GET)
     public ResponseEntity<User> getUserByEmail(@PathVariable String email){
+        System.out.println(email);
         User user = userDao.findByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -89,7 +98,7 @@ public class UserController {
     @RequestMapping(path = "/id/{userId}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUserByEmail(@PathVariable int userId, @RequestBody User user){
         User findUser = userDao.findByUserId(userId);
-        findUser.setPassword(user.getPassword());
+        findUser.setPolicyNo(user.getPolicyNo());
         findUser.setAddress(user.getAddress());
         findUser.setEmail(user.getEmail());
         findUser.setFname(user.getFname());
