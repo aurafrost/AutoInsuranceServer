@@ -28,6 +28,12 @@ public class ReportController {
         Report r = reportDao.save(report);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/inspect_officer/{email}", method = RequestMethod.GET)
+    public ResponseEntity<List<Report>> getReportByInspectOfficer(@PathVariable String email) {
+        List<Report> list = reportDao.findByInspectOfficer(email);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
     
     //fix from here
     @RequestMapping(path = "/{reportId}", method = RequestMethod.GET)
@@ -43,7 +49,7 @@ public class ReportController {
     }
 
     @RequestMapping(path = "/{reportId}", method = RequestMethod.PUT)
-    public ResponseEntity<Report> updateReportByEmail(@PathVariable int reportId, @RequestBody Report report){
+    public ResponseEntity<Report> updateReportById(@PathVariable int reportId, @RequestBody Report report){
         //TODO: Check if hibernate save overwrites the existing data
         Report findReport = reportDao.findByReportId(reportId);
         findReport.setInsuredEmail(report.getInsuredEmail());
